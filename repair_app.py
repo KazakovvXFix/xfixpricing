@@ -98,5 +98,8 @@ selected_range = st.selectbox("Оберіть діапазон або послу
 # Вивід ціни
 for entry in DATA[device_type][component]:
     if entry["діапазон"] == selected_range:
-        st.success(f"💰 Вартість: {entry['ціна']} грн")
+        if isinstance(entry["ціна"], str):
+            st.info(entry["ціна"])
+        else:
+            st.success(f"💰 Вартість: {entry['ціна']} грн")
         break
